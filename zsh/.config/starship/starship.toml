@@ -1,0 +1,171 @@
+# Starship Configuration
+# A minimal, fast, and customizable prompt for any shell
+
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+# Set timeout for commands (in milliseconds)
+command_timeout = 1000
+
+# Replace the "❯" symbol with "→" in the prompt
+[character]
+success_symbol = "[→](bold green)"
+error_symbol = "[→](bold red)"
+vimcmd_symbol = "[←](bold green)"
+
+# Disable the package module to improve speed
+[package]
+disabled = true
+
+# Configure directory display
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+read_only = " 🔒"
+home_symbol = "~"
+style = "bold blue"
+
+# Display current git branch
+[git_branch]
+symbol = "🌱 "
+truncation_length = 8
+truncation_symbol = "…"
+style = "bold purple"
+
+# Display git status
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "bold yellow"
+conflicted = "🏳"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?${count}"
+stashed = "*${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+
+# Display git commit
+[git_commit]
+commit_hash_length = 7
+tag_symbol = "🏷️ "
+
+# Duration of the last command
+[cmd_duration]
+min_time = 2000
+format = "took [$duration](bold yellow)"
+show_milliseconds = false
+
+# Current username
+[username]
+style_user = "cyan bold"
+style_root = "red bold"
+format = "[$user]($style) "
+disabled = false
+show_always = false
+
+# Current hostname
+[hostname]
+ssh_only = true
+format = "at [$hostname](bold green) "
+disabled = false
+
+# Current working directory
+[directory.substitutions]
+"Documents" = "📄 "
+"Downloads" = "📥 "
+"Music" = "🎵 "
+"Pictures" = "🖼️ "
+"Videos" = "🎞️ "
+"Projects" = "💻 "
+"GitHub" = "🐙 "
+
+# OS detection
+[os]
+format = "[$symbol]($style)"
+style = "bold white"
+disabled = false
+
+[os.symbols]
+Ubuntu = "🐧 "
+Debian = "🐧 "
+Raspbian = "🍓 "
+Linux = "🐧 "
+Macos = "🍎 "
+Windows = "🪟 "
+
+# Language versions - only show when in project directories
+[nodejs]
+format = "via [⬢ $version](bold green) "
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
+
+[python]
+format = "via [🐍 $version](bold blue) "
+detect_files = ["requirements.txt", "pyproject.toml", "Pipfile", "setup.py", ".python-version"]
+detect_folders = [".venv", "venv", "env"]
+
+[rust]
+format = "via [🦀 $version](bold red) "
+detect_files = ["Cargo.toml", "rust-toolchain.toml"]
+detect_folders = ["target"]
+
+[golang]
+format = "via [🐹 $version](bold cyan) "
+detect_files = ["go.mod", "go.sum", "go.work", "Gopkg.toml", "Gopkg.lock"]
+detect_folders = ["vendor"]
+
+# Show execution time duration
+[cmd_duration]
+min_time = 2000
+format = "took [$duration](bold yellow) "
+show_milliseconds = false
+
+# Memory usage
+[memory_usage]
+disabled = true
+threshold = 75
+symbol = "🧠 "
+style = "bold dimmed green"
+format = "$symbol[${ram}( | ${swap})]($style) "
+
+# Battery display (only if below threshold)
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+disabled = false
+format = "[$symbol$percentage]($style) "
+
+[[battery.display]]
+threshold = 30
+style = "bold red"
+
+# Show status of current shell job
+[jobs]
+symbol = "✦ "
+style = "bold blue"
+format = "[$symbol$number]($style) "
+threshold = 1
+
+# Prompt order and formatting
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$rust\
+$golang\
+$python\
+$memory_usage\
+$cmd_duration\
+$jobs\
+$battery\
+$line_break\
+$character
+"""
+

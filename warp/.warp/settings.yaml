@@ -1,0 +1,303 @@
+# Warp Terminal Settings
+# Configuration optimized for development with Zsh, tmux, and Starship
+
+# Core Terminal Settings
+terminal:
+  # Use GPU acceleration for better performance
+  gpu_acceleration: true
+  
+  # Command execution behavior
+  command_execution:
+    # Allow running commands in background
+    allow_background_execution: true
+    # Automatically scroll to show command output
+    auto_scroll_on_output: true
+  
+  # Bell/alert sound settings
+  bell:
+    # Disable audible bell
+    audible: false
+    # Enable visual bell (flash)
+    visual: true
+    
+  # Terminal scrollback behavior
+  scrollback:
+    # Number of lines to keep in scrollback buffer
+    lines: 10000
+    # Preserve alternate screen content when exiting applications
+    preserve_alternate_screen: true
+    
+  # Clipboard behavior
+  clipboard:
+    # Copy on selection
+    copy_on_select: true
+    # Trim trailing whitespace when copying
+    trim_trailing_whitespace: true
+    
+  # Default cursor settings
+  cursor:
+    # Cursor style options: block, underline, bar
+    style: "block"
+    # Cursor blink rate in milliseconds (0 for no blinking)
+    blink_interval: 500
+    # Enable cursor blinking
+    blink: true
+    
+  # Terminal control sequences
+  sequences:
+    # Allow hyperlinks in terminal
+    hyperlink: true
+
+# Shell Integration
+shell:
+  # Default shell to use
+  program: "/bin/zsh"
+  # Arguments passed to the shell
+  args: []
+  # Environment variables
+  env:
+    TERM: "xterm-256color"
+    # Enable Warp as a WSL GUI app
+    WSLENV: "TERM"
+  # Working directory on startup (empty for home directory)
+  working_directory: ""
+  # Shell integration options
+  integration:
+    # Enable Warp-specific shell integration features
+    enabled: true
+    # Enable Starship compatibility mode
+    prompt_detection: true
+
+# tmux Integration
+tmux:
+  # Enable tmux integration
+  integration: true
+  # Auto-attach to existing sessions
+  auto_attach: true
+  # Default layout for new tmux windows
+  default_layout: "even-horizontal"
+  # Key to use as tmux prefix (empty for Warp to pass through)
+  # Leave empty to use tmux's own prefix (Ctrl+a in our config)
+  prefix_key: ""
+
+# Theme and Appearance
+theme:
+  # Use the built-in theme
+  builtin: "dark"
+  # Custom theme options
+  custom:
+    # Background opacity (0.0 - 1.0)
+    background_opacity: 0.95
+    # Terminal background color
+    background_color: "#1E1E2E"
+    # Terminal foreground color
+    foreground_color: "#CDD6F4"
+    # Selection background color
+    selection_background_color: "#45475A"
+    # Selection foreground color
+    selection_foreground_color: "#CDD6F4"
+    # Cursor color
+    cursor_color: "#F5E0DC"
+  # Use system accent color
+  use_system_accent_color: true
+
+# Font Configuration
+font:
+  # Font family
+  normal:
+    family: "JetBrainsMono Nerd Font"
+    style: "Regular"
+  # Bold font
+  bold:
+    family: "JetBrainsMono Nerd Font"
+    style: "Bold"
+  # Italic font
+  italic:
+    family: "JetBrainsMono Nerd Font"
+    style: "Italic"
+  # Bold italic font
+  bold_italic:
+    family: "JetBrainsMono Nerd Font"
+    style: "Bold Italic"
+  # Font size in points
+  size: 12.0
+  # Line height (as a multiplier)
+  line_height: 1.2
+  # Character spacing (as a percentage)
+  character_spacing: 0
+  # Use ligatures
+  ligatures: true
+  # Enable font smoothing
+  antialiasing: true
+
+# Window and Tab Preferences
+window:
+  # Padding in pixels
+  padding:
+    x: 10
+    y: 10
+  # Window size
+  dimensions:
+    columns: 120
+    lines: 30
+  # Preserve window size when opening new windows
+  preserve_dimensions: true
+  # Starting position (center, top_left, etc.)
+  position: "center"
+  # Decorations: full, transparent, buttonless, none
+  decorations: "full"
+  # Startup mode: Windowed, Maximized, Fullscreen
+  startup_mode: "Windowed"
+  # Dynamic title
+  dynamic_title: true
+  # Tab configuration
+  tabs:
+    # Tab bar position: top, bottom
+    position: "top"
+    # Tab bar style: minimal, compact, padded
+    style: "compact"
+    # Show tab icons
+    show_icons: true
+    # Show tab numbers
+    show_tab_index: false
+    # Tab title max length
+    title_max_length: 25
+    # Tab highlight color
+    active_tab_highlight: "#F5E0DC"
+
+# Performance Optimizations
+performance:
+  # Throttle operations to save power
+  throttle_fps_when_hidden: true
+  # Disable animations when battery is low
+  disable_animations_on_battery: true
+  # Disable background processes when on battery
+  background_process_battery_optimization: true
+  # Rendering mode: software, opengl, vulkan
+  rendering_backend: "opengl"
+  # Frame rate limit
+  max_fps: 120
+  # Enable hardware acceleration
+  hardware_acceleration: true
+
+# Custom Key Bindings
+keybindings:
+  # Open new tab
+  - action: "CreateTab"
+    key: "t"
+    mods: "command"
+  # Close tab
+  - action: "CloseTab"
+    key: "w"
+    mods: "command"
+  # Focus next tab
+  - action: "NextTab"
+    key: "tab"
+    mods: "control"
+  # Focus previous tab
+  - action: "PreviousTab"
+    key: "tab"
+    mods: "control|shift"
+  # Split horizontally
+  - action: "SplitHorizontal"
+    key: "\\"
+    mods: "command"
+  # Split vertically
+  - action: "SplitVertical"
+    key: "-"
+    mods: "command"
+  # Clear screen
+  - action: "ClearScreen"
+    key: "k"
+    mods: "command"
+  # Focus next pane
+  - action: "FocusNextPane"
+    key: "]"
+    mods: "command"
+  # Focus previous pane
+  - action: "FocusPreviousPane"
+    key: "["
+    mods: "command"
+  # Open command palette
+  - action: "CommandPalette"
+    key: "p"
+    mods: "command"
+  # Increase font size
+  - action: "IncreaseFontSize"
+    key: "plus"
+    mods: "command"
+  # Decrease font size
+  - action: "DecreaseFontSize"
+    key: "minus"
+    mods: "command"
+  # Reset font size
+  - action: "ResetFontSize"
+    key: "0"
+    mods: "command"
+  # Toggle full screen
+  - action: "ToggleFullScreen"
+    key: "f"
+    mods: "command|shift"
+
+# AI and Command Palette Features
+features:
+  # AI Command suggestions
+  ai:
+    # Enable AI suggestions
+    enabled: true
+    # Show AI suggestions automatically
+    auto_suggestions: true
+    # AI model to use: default, fast, accurate
+    model: "default"
+    # Maximum number of suggestions
+    max_suggestions: 5
+    # Command history to analyze
+    history_analysis: true
+    # Privacy settings
+    privacy:
+      # Send anonymous usage data
+      send_usage_data: false
+      # Store command history locally only
+      local_history_only: true
+      
+  # Command palette
+  command_palette:
+    # Enable command palette
+    enabled: true
+    # Show recent commands
+    show_recent_commands: true
+    # Show command documentation
+    show_documentation: true
+    # Maximum number of suggestions
+    max_suggestions: 10
+
+# Plugin system settings
+plugins:
+  # Enable plugins
+  enabled: true
+  # Auto-update plugins
+  auto_update: true
+  # Plugin directory
+  directory: "~/.warp/plugins"
+  
+# Notifications
+notifications:
+  # Enable desktop notifications
+  enabled: true
+  # Notification types to display
+  types:
+    command_completion: true
+    process_completion: true
+    session_events: true
+  # Duration of notifications in milliseconds
+  duration_ms: 3000
+  
+# Accessibility
+accessibility:
+  # High contrast mode
+  high_contrast: false
+  # Screen reader compatibility
+  screen_reader_compatible: true
+  # Reduce motion
+  reduce_motion: false
+
